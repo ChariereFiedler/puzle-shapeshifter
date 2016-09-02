@@ -1,0 +1,26 @@
+{
+  "name": "pixel-website",
+  "version": "1.0.0",
+  "description": "Le site web de Pixel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pixel-Isima/Pixel-Isima.github.io.git"
+  },
+  "keywords": [
+    "pixel",
+    "website"
+  ],
+  "author": "Cédric Charière Fiedler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pixel-Isima/Pixel-Isima.github.io/issues"
+  },
+  "homepage": "https://github.com/Pixel-Isima/Pixel-Isima.github.io#readme",
+  "devDependencies": {
+
+  }
+}
