@@ -10,7 +10,7 @@ const frontMatter = require('gulp-front-matter');
 const tap = require('gulp-tap');
 const Q = require('q');
 
-gulp.task('build:clean', () => {
+gulp.task('clean', () => {
     return del([
         'dist/**/*'
     ])
@@ -22,14 +22,14 @@ gulp.task('handlebars:compile', () => {
 
 gulp.task('build', () => {
     let templates = {};
-    return gulp.src('_blogs/*.md')
+    return gulp.src('_toCompile/*.md')
         .pipe(frontMatter({
             property: 'data',
             remove: true
         }))
         .pipe(markdown())
         .pipe(tap(function (file) {
-            console.log(JSON.stringify(file.contents.toString()));
+
             let template = file.data.template;
             let compile = (template) => {
                 return template({
@@ -38,7 +38,6 @@ gulp.task('build', () => {
                 });
             };
             if(template !== undefined) {
-                console.log('Defined');
                 if(templates[template] === undefined) {
                     let filepath = path.join('./_templates', template + '.hbs');
                     console.log(filepath);
@@ -50,12 +49,6 @@ gulp.task('build', () => {
                 file.contents = new Buffer(compile(templates[template]), "utf-8")
             }
 
-            //console.log(JSON.stringify(file));
-        }))
-        .pipe(tap((file) => {
-            console.log(JSON.stringify(file));
-
-            console.log(file._contents.toString());
         }))
         .pipe(gulp.dest('dist'));
 });
