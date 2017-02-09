@@ -71,8 +71,8 @@ gulp.task('compile', () => {
 
 /*---------------------------------------------*/
 gulp.task('watch', ()=> {
-    gulp.watch(path.join(config.srcDirectory, '/**/*.ts'), ['typescript']);
-    gulp.watch(path.join(configTest.srcDirectory, '/**/*.ts'), ['typescriptTest']);
+    gulp.watch(path.join(config.srcDirectory, './src/**/*.ts'), ['typescript']);
+    gulp.watch(path.join(configTest.srcDirectory, './test/**/*.ts'), ['typescriptTest']);
 });
 
 gulp.task('build', ['typescript', 'typescriptTest']);
