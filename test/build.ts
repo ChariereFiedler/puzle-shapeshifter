@@ -11,7 +11,7 @@ import * as fs from "fs";
 describe("Gulp build", () => {
     it("test.md with page.hbs to test.html", ()=> {
         execSync("gulp build");
-        let result = fs.readFileSync("dist/test.html", "utf8");
+        let result = fs.readFileSync("_compiled/test.html", "utf8");
         let norm = fs.readFileSync("test/dataset/build.html", "utf8");
         expect(result).to.equal(norm);
     });
