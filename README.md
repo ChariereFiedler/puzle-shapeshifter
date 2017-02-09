@@ -94,7 +94,7 @@ Open a console at project root
     
 or
 
-    $gulp build
+    $gulp compile
 
 ### Clean the build
 

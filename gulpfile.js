@@ -1,14 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-
-
 const gulp = require('gulp');
 const markdown = require('gulp-markdown');
 const del = require('del');
 const handlebars = require('handlebars');
 const frontMatter = require('gulp-front-matter');
 const tap = require('gulp-tap');
-const Q = require('q');
 
 gulp.task('clean', () => {
     return del([
@@ -16,11 +13,26 @@ gulp.task('clean', () => {
     ])
 });
 
-gulp.task('handlebars:compile', () => {
+/*---------------------------------------------*/
+/* Typescript tasks
+/*---------------------------------------------*/
+const config = {
+    buildDirectory: './dist',
+    srcDirectory: './src'
+};
+require('./gulp_tasks/typescript')(gulp, config);
 
-});
+const configTest = {
+    buildDirectory: './test',
+    srcDirectory: './test'
+};
 
-gulp.task('build', () => {
+require('./gulp_tasks/typescript')(gulp, configTest, "Test");
+
+/*---------------------------------------------*/
+/* Hbs Compilation */
+/*---------------------------------------------*/
+gulp.task('compile', () => {
     let templates = {};
     return gulp.src('_toCompile/*.md')
         .pipe(frontMatter({
@@ -53,4 +65,12 @@ gulp.task('build', () => {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['build']);
+/*---------------------------------------------*/
+gulp.task('watch', ()=> {
+    gulp.watch(path.join(config.srcDirectory, '/**/*.ts'), ['typescript', 'typescriptTest']);
+});
+
+gulp.task('build', ['typescript', 'typescriptTest']);
+
+
+gulp.task('default', ['build','watch']);
