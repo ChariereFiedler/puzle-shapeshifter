@@ -17,6 +17,16 @@ Install vendors
 
     $npm install
 
+Install global tools
+
+    $npm run installGlobal
+
+## Test
+
+Running tests
+
+    $npm test
+
 ## Usage
 
 The application takes all documents in the `_toCompile` folder and 
@@ -101,3 +111,6 @@ or
 Open a console at project root
 
     $gulp clean
+
+
+

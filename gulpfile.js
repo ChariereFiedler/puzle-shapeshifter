@@ -9,7 +9,8 @@ const tap = require('gulp-tap');
 
 gulp.task('clean', () => {
     return del([
-        'dist/**/*'
+        'dist/**/*',
+        'test/**/*.js'
     ])
 });
 
@@ -18,13 +19,16 @@ gulp.task('clean', () => {
 /*---------------------------------------------*/
 const config = {
     buildDirectory: './dist',
-    srcDirectory: './src'
+    srcDirectory: './src',
+    tscongif: './src/tsconfig.json'
+
 };
 require('./gulp_tasks/typescript')(gulp, config);
 
 const configTest = {
     buildDirectory: './test',
-    srcDirectory: './test'
+    srcDirectory: './test',
+    tscongif: './test/tsconfig.json'
 };
 
 require('./gulp_tasks/typescript')(gulp, configTest, "Test");
@@ -62,12 +66,13 @@ gulp.task('compile', () => {
             }
 
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('_compiled'));
 });
 
 /*---------------------------------------------*/
 gulp.task('watch', ()=> {
-    gulp.watch(path.join(config.srcDirectory, '/**/*.ts'), ['typescript', 'typescriptTest']);
+    gulp.watch(path.join(config.srcDirectory, '/**/*.ts'), ['typescript']);
+    gulp.watch(path.join(configTest.srcDirectory, '/**/*.ts'), ['typescriptTest']);
 });
 
 gulp.task('build', ['typescript', 'typescriptTest']);
