@@ -5,6 +5,17 @@
 Generate easily html file from markdown document and handlebars
 templates.
 
+## Roadmap
+
+- ~~Generate HTML files from gulp tasks~~
+- CLI support
+- ToPdf option
+- Add themes support
+- Add themes :
+    - Reveal.JS
+    - HTML5 Wrapper...
+- Add plugins support
+
 ## Prerequisites
 
 - Node > 6.2
