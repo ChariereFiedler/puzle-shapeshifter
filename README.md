@@ -8,7 +8,7 @@ templates.
 ## Roadmap
 
 - ~~Generate HTML files from gulp tasks~~
-- CLI support
+- ~~CLI support~~
 - ToPdf option
 - Add themes support
 - Add themes :

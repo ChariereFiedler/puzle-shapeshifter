@@ -1,6 +1,6 @@
 {
-  "name": "Shapeshifter",
-  "version": "0.0.1",
+  "name": "shapeshifter",
+  "version": "0.1.1",
   "description": "A template based file generator, propulsed by gulp",
   "main": "dist/main.js",
   "bin": {
