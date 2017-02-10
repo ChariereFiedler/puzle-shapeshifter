@@ -47,7 +47,6 @@ gulp.task('watch', ()=> {
     gulp.watch(path.join(configTest.srcDirectory, './**/*.ts'), ['typescriptTest']);
 });
 
-gulp.task('build', ['typescript', 'typescriptTest']);
+gulp.task('build', gulp.parallel('typescript', 'typescriptTest'));
 
-
-gulp.task('default', ['build','watch']);
+gulp.task('default', gulp.series('build','watch'));
