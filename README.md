@@ -24,6 +24,12 @@ templates.
 
 ## Install
 
+### Using as CLI tool
+
+    $npm i -g https://github.com/ChariereFiedler/puzle-shapeshifter.git
+
+### Development
+
 Install vendors
 
     $npm install
@@ -40,18 +46,34 @@ Running tests
 
 ## Usage
 
-The application takes all documents in the `_toCompile` folder and 
-compiles them into the `dist` folder.
+Shapeshifter is provided as binary.
 
-### Create a template
+The application takes all documents in the source folder and
+compiles them into a dist folder.
 
-The template are located in the `_templates` folder.
+Shapeshifter can be executed like so :
+
+    shapeshifter [options]
+
+### Options
+
+- `-h`, `--help`        output usage information
+- `-V`, `--version`     output the version number
+- `-s`, `--src <item>`  the markdown files location, `_toCompile` by default
+- `-d`, `--destination <item>` the generation destination, `_compiled` by default
+- `-t`, `--templates <item>`    the templates location, `_templates` by default
+
+## Create a template
+
+The template are located by default in the `_templates` folder.
 They follow the `handlebars` format.
 
 - See [HandlebarsJS](http://handlebarsjs.com/)
 
 In your template, you can add variables which be replaced
-during compilation step. The frontmatter variables are prefixed
+during compilation step. 
+
+The frontmatter variables are prefixed
 by `data.*` expression.
     
         <!DOCTYPE html>
@@ -78,15 +100,12 @@ The `content` variable define the **markdown document body**.
 The other variables are linked to the **markdown frontmatter**.
 
 You are free to create variables you need. 
- 
 
-    
+## Create a compilable document
 
-### Create a compilable document
+The compilable documents are located in the `_toCompile` folders by default.
 
-The compilable documents are located in the `_toCompile` folders.
-
-The needed frontmatter variable `template` is required. Define here
+The frontmatter variable `template` is required. Define here
 the template file used during the compilation step, without the `*.hbs` 
 suffix.
 
@@ -105,23 +124,3 @@ Example:
     ## I'm a title !
     
     **I'm Bold**
-
-
-### Build the documents
-
-Open a console at project root
-
-    $gulp
-    
-or
-
-    $gulp compile
-
-### Clean the build
-
-Open a console at project root
-
-    $gulp clean
-
-
-
