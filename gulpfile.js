@@ -43,8 +43,8 @@ require('./gulp_tasks/handlebars-compilation')(gulp, hbsCompileParams);
 
 /*---------------------------------------------*/
 gulp.task('watch', ()=> {
-    gulp.watch(path.join(config.srcDirectory, './**/*.ts'), ['typescript']);
-    gulp.watch(path.join(configTest.srcDirectory, './**/*.ts'), ['typescriptTest']);
+    gulp.watch(path.join(config.srcDirectory, './**/*.ts'), gulp.series('typescript'));
+    gulp.watch(path.join(configTest.srcDirectory, './**/*.ts'), gulp.series('typescriptTest'));
 });
 
 gulp.task('build', gulp.parallel('typescript', 'typescriptTest'));
