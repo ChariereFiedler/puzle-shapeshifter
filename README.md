@@ -10,7 +10,12 @@ templates.
 - ~~Generate HTML files from gulp tasks~~
 - ~~CLI support~~
 - ~~Add default theme~~
-- ToPdf option
+- ~~ToPdf option~~
+- Add options to select export
+    - To PDF
+    - To Html
+- Fix issues:
+    - PhantomJS Font Face support: not working yet
 - Add themes support
 - Add themes :
     - Reveal.JS

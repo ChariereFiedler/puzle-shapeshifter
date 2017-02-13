@@ -11,7 +11,8 @@ const handlebars = require('handlebars');
 const frontMatter = require('gulp-front-matter');
 const tap = require('gulp-tap');
 const fs = require('fs');
-
+const pdf = require('gulp-html-pdf');
+const debug = require('gulp-debug');
 
 
 console.log("--------------------------------------");
@@ -39,8 +40,6 @@ async function compile(params):Promise<any>{
         }))
         .pipe(markdown())
         .pipe(tap(function (file) {
-
-
             let template = file.data.template;
             let compile = (template) => {
                 return template({
@@ -59,12 +58,23 @@ async function compile(params):Promise<any>{
             if (!fs.existsSync(filepath)) {
                 filepath = path.join(__dirname, "../_templates/page.hbs");
             }
-            console.log(count++ + " - " +(file.data.title || " ") + " : [template] " + template);
             let data = fs.readFileSync(filepath);
             templates[template] = handlebars.compile(data.toString());
             file.contents = new Buffer(compile(templates[template]), "utf-8")
         }))
-        .pipe(gulp.dest(params.dest));
+        .pipe(gulp.dest(path.join(params.dest, "html")))
+        .pipe(debug({title: 'To HTML : '}))
+        .pipe(pdf({
+            "format": "A4",
+            "border": {
+                "top": "25mm",            // default is 0, units: mm, cm, in, px
+                "right": "20mm",
+                "bottom": "15mm",
+                "left": "20mm"
+            }
+        }))
+        .pipe(debug({title: 'To PDF : '}))
+        .pipe(gulp.dest(path.join(params.dest, "pdf")));
 }
 
 let params = {
