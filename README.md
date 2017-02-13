@@ -9,6 +9,7 @@ templates.
 
 - ~~Generate HTML files from gulp tasks~~
 - ~~CLI support~~
+- ~~Add default theme~~
 - ToPdf option
 - Add themes support
 - Add themes :
