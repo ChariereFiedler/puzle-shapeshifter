@@ -30,11 +30,14 @@ commander
 function compile(params) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Compilation running');
+        let count = 0;
         let templates = {};
         return gulp.src(params.src)
             .pipe(frontMatter({
             property: 'data',
             remove: true
+        }).on('error', (e) => {
+            console.log(e);
         }))
             .pipe(markdown())
             .pipe(tap(function (file) {
@@ -45,15 +48,18 @@ function compile(params) {
                     content: file.contents.toString()
                 });
             };
-            if (template !== undefined) {
-                if (templates[template] === undefined) {
-                    let filepath = path.join(params.templateLocation, template + '.hbs');
-                    console.log(filepath);
-                    let data = fs.readFileSync(filepath);
-                    templates[template] = handlebars.compile(data.toString());
-                }
-                file.contents = new Buffer(compile(templates[template]), "utf-8");
+            let filepath = "";
+            if (template === undefined) {
+                template = "page";
             }
+            filepath = path.join(params.templateLocation, template + '.hbs');
+            if (!fs.existsSync(filepath)) {
+                filepath = path.join(__dirname, "../_templates/page.hbs");
+            }
+            console.log(count++ + " - " + (file.data.title || " ") + " : [template] " + template);
+            let data = fs.readFileSync(filepath);
+            templates[template] = handlebars.compile(data.toString());
+            file.contents = new Buffer(compile(templates[template]), "utf-8");
         }))
             .pipe(gulp.dest(params.dest));
     });
