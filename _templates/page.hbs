@@ -3,16 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>{{data.title}}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0 0 0 0px;
+            font-family: 'Open Sans', sans-serif;
+            color: #2F2E33;
+        }
+
+        h2, h4, h6 {
+            color: #3F3745;
+        }
+        b, strong {
+            color: #3F3745;
+        }
+        p {
+            margin: 0 0 0 0;
+            line-height: 170%;
+        }
+        ul, li {
+            line-height: 170%;
+        }
+        @media screen {
+            body {
+                padding: 0;
+                color: #211D24;
+                font-family: 'Roboto', sans-serif;
+                margin: 0 15%;
+            }
+        }
+
+        @page {
+            size: auto;
+            margin: 25mm 20mm 15mm 20mm;
+        }
+
+    </style>
 </head>
-<body>
-
-    <header>I'm the Header</header>
-    <div>{{data.title}}</div>
-    <div>{{{data.randomvar}}}</div>
-    <article>I'm the article
-
-        {{{content}}}
-
-    </article>
-</body>
+    <body>
+        {{#if data.title}}
+        <header>
+            <h1>{{data.title}}</h1>
+        </header>
+        {{/if}}
+        <article>
+            {{{content}}}
+        </article>
+    </body>
 </html>

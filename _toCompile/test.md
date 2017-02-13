@@ -5,6 +5,6 @@ template: page
 randomvar: random
 ---
 
-## I'm a title !
+# I'm a title !
 
 **I'm Bold**
