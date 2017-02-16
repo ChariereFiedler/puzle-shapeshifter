@@ -10,6 +10,10 @@ The tool is currently usable in state.
 We work hard to provide you soon lot of cool features.
 Do not hesitate to share your remarks or issues in [dedicated channel](https://github.com/ChariereFiedler/puzle-shapeshifter/issues).
 
+## License
+
+MIT
+
 ## Roadmap
 
 - ~~Generate HTML files from gulp tasks~~
