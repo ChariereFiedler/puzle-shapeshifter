@@ -14,6 +14,8 @@ templates.
 - Add options to select export
     - To PDF
     - To Html
+- Add custom options with dedicated config file per project
+- Add custom options with dedicated config file per folder
 - Fix issues:
     - PhantomJS Font Face support: not working yet
 - Add themes support
