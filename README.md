@@ -1,9 +1,14 @@
-# Shapeshifter
+# Puzle Shapeshifter
 
 ## About
 
-Generate easily html file from markdown document and handlebars
-templates.
+With **Shapesifter**, merge markdown documents, handlebars templates and 
+static html themes into static html files and / or pdf documents.
+
+The tool is currently usable in state.
+
+We work hard to provide you soon lot of cool features.
+Do not hesitate to share your remarks or issues in [dedicated channel](https://github.com/ChariereFiedler/puzle-shapeshifter/issues).
 
 ## Roadmap
 
