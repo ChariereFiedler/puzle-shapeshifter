@@ -23,7 +23,8 @@ MIT
 - Add options to select export
     - To PDF
     - To Html
-- Add custom options with dedicated config file per project
+- ~~Add custom options with dedicated config file per project~~
+- Add a CLI command to init a config file
 - Add custom options with dedicated config file per folder
 - Fix issues:
     - PhantomJS Font Face support: not working yet
@@ -72,13 +73,53 @@ Shapeshifter can be executed like so :
 
     shapeshifter [options]
 
-### Options
+### CLI Options
 
 - `-h`, `--help`        output usage information
 - `-V`, `--version`     output the version number
 - `-s`, `--src <item>`  the markdown files location, `_toCompile` by default
 - `-d`, `--destination <item>` the generation destination, `_compiled` by default
 - `-t`, `--templates <item>`    the templates location, `_templates` by default
+
+### Use a config file
+
+You can use a config file to define the compilation options.
+
+First, create a `shapeshifter.config.js` file at your root project directory with
+this structure :
+```javascript
+module.exports = {
+    src:  './_toCompile/',
+    dest: './_compiled2',
+    templateLocation: './_templates',
+    pdfConfig: {"format": "A3",
+        "border": {
+            "top": "25mm",            // default is 0, units: mm, cm, in, px
+            "right": "20mm",
+            "bottom": "15mm",
+            "left": "20mm"
+        }}
+};
+```
+
+#### The config file options:
+
+```javascript
+module.exports = {
+    src:  '',   // the markdown files location, `_toCompile` by default
+    dest: '',   // the generation destination, `_compiled` by default
+    templateLocation: '', // the templates location, `_templates` by default
+    pdfConfig: {} // the pdf compilation options, see https://github.com/marcbachmann/node-html-pdf#options
+};
+```
+
+For the pdf options, see the [node-html-pdf documentation](https://github.com/marcbachmann/node-html-pdf#options).
+
+The config file override the default options.
+
+**Warning** : the options given as command arguments override these defined in the 
+config file.
+
 
 ## Create a template
 
@@ -92,25 +133,27 @@ during compilation step.
 
 The frontmatter variables are prefixed
 by `data.*` expression.
-    
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>{{data.title}}</title>
-        </head>
-        <body>
-        
-            <header>I'm the Header</header>
-            <div>{{data.title}}</div>
-            <div>{{{data.randomvar}}}</div>
-            <article>I'm the article
-        
-                {{{content}}}
-        
-            </article>
-        </body>
-        </html>
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{data.title}}</title>
+</head>
+<body>
+
+    <header>I'm the Header</header>
+    <div>{{data.title}}</div>
+    <div>{{{data.randomvar}}}</div>
+    <article>I'm the article
+
+        {{{content}}}
+
+    </article>
+</body>
+</html>
+```
         
 The `content` variable define the **markdown document body**. 
 
@@ -131,6 +174,7 @@ have defined.
 
 Example:
 
+```markdown
     ---
     title: I'm the title
     author: Cédric Charière Fiedler
@@ -141,3 +185,4 @@ Example:
     ## I'm a title !
     
     **I'm Bold**
+```
