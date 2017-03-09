@@ -43,7 +43,7 @@ MIT
 
 ### Using as CLI tool
 
-    $npm i -g https://github.com/ChariereFiedler/puzle-shapeshifter.git
+    $npm i -g puzle-shapeshifter
 
 ### Development
 
