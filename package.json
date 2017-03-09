@@ -1,7 +1,7 @@
 {
-  "name": "shapeshifter",
+  "name": "puzle-shapeshifter",
   "version": "0.1.3",
-  "description": "A template based file generator, propulsed by gulp",
+  "description": "With Shapesifter, merge markdown documents, handlebars templates and static html themes into static html files and / or pdf documents. The tool is currently usable in state.",
   "main": "dist/main.js",
   "bin": {
     "shapeshifter": "./bin/cli.js"
@@ -12,16 +12,16 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ChariereFiedler/puzle-shapeshifter"
   },
   "keywords": [
     "gulp",
     "markdown"
   ],
   "author": "Cédric Charière Fiedler",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/ChariereFiedler/puzle-shapeshifter/issues"
   },
   "homepage": "",
   "devDependencies": {
