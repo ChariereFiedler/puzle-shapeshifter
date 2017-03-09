@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
+const del = require('del');
 
 gulp.task('clean', () => {
     return del([
