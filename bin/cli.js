@@ -2,4 +2,4 @@
 
 'use strict';
 
-require('../dist/main.js');
+require('../dist/shapeshifter.js');

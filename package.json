@@ -1,8 +1,8 @@
 {
   "name": "puzle-shapeshifter",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "With Shapesifter, merge markdown documents, handlebars templates and static html themes into static html files and / or pdf documents. The tool is currently usable in state.",
-  "main": "dist/main.js",
+  "main": "dist/shapeshifter.js",
   "bin": {
     "shapeshifter": "./bin/cli.js"
   },
