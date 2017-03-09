@@ -1,0 +1,135 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\cedriccf\\lab\\puzle-shapeshifter',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\cedriccf\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle puzle-shapeshifter@0.1.3~prepublish: puzle-shapeshifter@0.1.3
+11 silly lifecycle puzle-shapeshifter@0.1.3~prepublish: no script for prepublish, continuing
+12 info lifecycle puzle-shapeshifter@0.1.3~prepare: puzle-shapeshifter@0.1.3
+13 silly lifecycle puzle-shapeshifter@0.1.3~prepare: no script for prepare, continuing
+14 verbose tar pack [ 'C:\\Users\\cedriccf\\AppData\\Roaming\\npm-cache\\puzle-shapeshifter\\0.1.3\\package.tgz',
+14 verbose tar pack   'C:\\Users\\cedriccf\\lab\\puzle-shapeshifter' ]
+15 verbose tarball C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package.tgz
+16 verbose folder C:\Users\cedriccf\lab\puzle-shapeshifter
+17 verbose addLocalTarball adding from inside cache C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package.tgz
+18 verbose correctMkdir C:\Users\cedriccf\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+19 silly cache afterAdd puzle-shapeshifter@0.1.3
+20 verbose afterAdd C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package\package.json not in flight; writing
+21 verbose correctMkdir C:\Users\cedriccf\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+22 verbose afterAdd C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package\package.json written
+23 silly publish { name: 'puzle-shapeshifter',
+23 silly publish   version: '0.1.3',
+23 silly publish   description: 'With Shapesifter, merge markdown documents, handlebars templates and static html themes into static html files and / or pdf documents. The tool is currently usable in state.',
+23 silly publish   main: 'dist/main.js',
+23 silly publish   bin: { shapeshifter: './bin/cli.js' },
+23 silly publish   scripts:
+23 silly publish    { test: 'mocha ./test --reporter spec',
+23 silly publish      installGlobal: 'npm i -g gulp gulp-cli' },
+23 silly publish   repository:
+23 silly publish    { type: 'git',
+23 silly publish      url: 'git+https://github.com/ChariereFiedler/puzle-shapeshifter.git' },
+23 silly publish   keywords: [ 'gulp', 'markdown' ],
+23 silly publish   author: { name: 'Cédric Charière Fiedler' },
+23 silly publish   license: 'MIT',
+23 silly publish   bugs: { url: 'https://github.com/ChariereFiedler/puzle-shapeshifter/issues' },
+23 silly publish   homepage: 'https://github.com/ChariereFiedler/puzle-shapeshifter#readme',
+23 silly publish   devDependencies:
+23 silly publish    { '@types/chai': '^3.4.34',
+23 silly publish      '@types/mocha': '^2.2.39',
+23 silly publish      '@types/node': '^7.0.5',
+23 silly publish      chai: '^3.5.0',
+23 silly publish      mocha: '^3.2.0',
+23 silly publish      'gulp-typescript': '^3.1.4',
+23 silly publish      typescript: '^2.1.6' },
+23 silly publish   dependencies:
+23 silly publish    { '@types/gulp': '^3.8.32',
+23 silly publish      commander: '^2.9.0',
+23 silly publish      del: '^2.2.2',
+23 silly publish      gulp: 'github:gulpjs/gulp#4.0',
+23 silly publish      'gulp-debug': '^3.1.0',
+23 silly publish      'gulp-front-matter': '^1.3.0',
+23 silly publish      'gulp-html-pdf': '^0.3.0',
+23 silly publish      'gulp-markdown': '^1.2.0',
+23 silly publish      'gulp-tap': '^0.1.3',
+23 silly publish      handlebars: '^4.0.5' },
+23 silly publish   readme: '# Puzle Shapeshifter\r\n\r\n## About\r\n\r\nWith **Shapesifter**, merge markdown documents, handlebars templates and \r\nstatic html themes into static html files and / or pdf documents.\r\n\r\nThe tool is currently usable in state.\r\n\r\nWe work hard to provide you soon lot of cool features.\r\nDo not hesitate to share your remarks or issues in [dedicated channel](https://github.com/ChariereFiedler/puzle-shapeshifter/issues).\r\n\r\n## License\r\n\r\nMIT\r\n\r\n## Roadmap\r\n\r\n- ~~Generate HTML files from gulp tasks~~\r\n- ~~CLI support~~\r\n- ~~Add default theme~~\r\n- ~~ToPdf option~~\r\n- Add options to select export\r\n    - To PDF\r\n    - To Html\r\n- Add custom options with dedicated config file per project\r\n- Add custom options with dedicated config file per folder\r\n- Fix issues:\r\n    - PhantomJS Font Face support: not working yet\r\n- Add themes support\r\n- Add themes :\r\n    - Reveal.JS\r\n    - HTML5 Wrapper...\r\n- Add plugins support\r\n\r\n## Prerequisites\r\n\r\n- Node > 6.2\r\n- Npm\r\n- Gulp\r\n\r\n## Install\r\n\r\n### Using as CLI tool\r\n\r\n    $npm i -g puzle-shapeshifter\r\n\r\n### Development\r\n\r\nInstall vendors\r\n\r\n    $npm install\r\n\r\nInstall global tools\r\n\r\n    $npm run installGlobal\r\n\r\n## Test\r\n\r\nRunning tests\r\n\r\n    $npm test\r\n\r\n## Usage\r\n\r\nShapeshifter is provided as binary.\r\n\r\nThe application takes all documents in the source folder and\r\ncompiles them into a dist folder.\r\n\r\nShapeshifter can be executed like so :\r\n\r\n    shapeshifter [options]\r\n\r\n### Options\r\n\r\n- `-h`, `--help`        output usage information\r\n- `-V`, `--version`     output the version number\r\n- `-s`, `--src <item>`  the markdown files location, `_toCompile` by default\r\n- `-d`, `--destination <item>` the generation destination, `_compiled` by default\r\n- `-t`, `--templates <item>`    the templates location, `_templates` by default\r\n\r\n## Create a template\r\n\r\nThe template are located by default in the `_templates` folder.\r\nThey follow the `handlebars` format.\r\n\r\n- See [HandlebarsJS](http://handlebarsjs.com/)\r\n\r\nIn your template, you can add variables which be replaced\r\nduring compilation step. \r\n\r\nThe frontmatter variables are prefixed\r\nby `data.*` expression.\r\n    \r\n        <!DOCTYPE html>\r\n        <html lang="fr">\r\n        <head>\r\n            <meta charset="UTF-8">\r\n            <title>{{data.title}}</title>\r\n        </head>\r\n        <body>\r\n        \r\n            <header>I\'m the Header</header>\r\n            <div>{{data.title}}</div>\r\n            <div>{{{data.randomvar}}}</div>\r\n            <article>I\'m the article\r\n        \r\n                {{{content}}}\r\n        \r\n            </article>\r\n        </body>\r\n        </html>\r\n        \r\nThe `content` variable define the **markdown document body**. \r\n\r\nThe other variables are linked to the **markdown frontmatter**.\r\n\r\nYou are free to create variables you need. \r\n\r\n## Create a compilable document\r\n\r\nThe compilable documents are located in the `_toCompile` folders by default.\r\n\r\nThe frontmatter variable `template` is required. Define here\r\nthe template file used during the compilation step, without the `*.hbs` \r\nsuffix.\r\n\r\nDo not forget to add all frontmatter variables used by the template you\r\nhave defined.\r\n\r\nExample:\r\n\r\n    ---\r\n    title: I\'m the title\r\n    author: Cédric Charière Fiedler\r\n    template: page\r\n    randomvar: random\r\n    ---\r\n    \r\n    ## I\'m a title !\r\n    \r\n    **I\'m Bold**\r\n',
+23 silly publish   readmeFilename: 'README.md',
+23 silly publish   gitHead: '416960b5ead21629fb44fa0c338428148aa33de2',
+23 silly publish   _id: 'puzle-shapeshifter@0.1.3',
+23 silly publish   _shasum: '43af4f08e0514ceaa479b1def72b4eb2bffd4857',
+23 silly publish   _from: '.' }
+24 info lifecycle puzle-shapeshifter@0.1.3~prepublishOnly: puzle-shapeshifter@0.1.3
+25 silly lifecycle puzle-shapeshifter@0.1.3~prepublishOnly: no script for prepublishOnly, continuing
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name puzle-shapeshifter
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry https://registry.npmjs.org/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'puzle-shapeshifter',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   escapedName: 'puzle-shapeshifter',
+30 silly mapToRegistry   name: 'puzle-shapeshifter',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri https://registry.npmjs.org/puzle-shapeshifter
+32 verbose publish registryBase https://registry.npmjs.org/
+33 silly publish uploading C:\Users\cedriccf\AppData\Roaming\npm-cache\puzle-shapeshifter\0.1.3\package.tgz
+34 verbose request uri https://registry.npmjs.org/puzle-shapeshifter
+35 verbose request sending authorization for write operation
+36 info attempt registry request try #1 at 10:37:59
+37 verbose request using bearer token for auth
+38 verbose request id e26950d42ec0a964
+39 http request PUT https://registry.npmjs.org/puzle-shapeshifter
+40 http 403 https://registry.npmjs.org/puzle-shapeshifter
+41 verbose headers { 'content-type': 'application/json',
+41 verbose headers   'cache-control': 'max-age=300',
+41 verbose headers   'content-length': '95',
+41 verbose headers   'accept-ranges': 'bytes',
+41 verbose headers   date: 'Thu, 09 Mar 2017 09:38:00 GMT',
+41 verbose headers   via: '1.1 varnish',
+41 verbose headers   connection: 'keep-alive',
+41 verbose headers   'x-served-by': 'cache-cdg8724-CDG',
+41 verbose headers   'x-cache': 'MISS',
+41 verbose headers   'x-cache-hits': '0',
+41 verbose headers   'x-timer': 'S1489052279.564553,VS0,VE894',
+41 verbose headers   vary: 'Accept-Encoding' }
+42 verbose request invalidating C:\Users\cedriccf\AppData\Roaming\npm-cache\registry.npmjs.org\puzle-shapeshifter on PUT
+43 error publish Failed PUT 403
+44 verbose stack Error: "You cannot publish over the previously published version 0.1.3." : puzle-shapeshifter
+44 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:304:12)
+44 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:292:14)
+44 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:212:14)
+44 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:186:22)
+44 verbose stack     at emitTwo (events.js:106:13)
+44 verbose stack     at Request.emit (events.js:194:7)
+44 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1081:10)
+44 verbose stack     at emitOne (events.js:96:13)
+44 verbose stack     at Request.emit (events.js:191:7)
+44 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1001:12)
+45 verbose statusCode 403
+46 verbose pkgid puzle-shapeshifter
+47 verbose cwd C:\Users\cedriccf\lab\puzle-shapeshifter
+48 error Windows_NT 10.0.14393
+49 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+50 error node v7.7.1
+51 error npm  v4.1.2
+52 error code E403
+53 error "You cannot publish over the previously published version 0.1.3." : puzle-shapeshifter
+54 error If you need help, you may report this error at:
+54 error     <https://github.com/npm/npm/issues>
+55 verbose exit [ 1, true ]
