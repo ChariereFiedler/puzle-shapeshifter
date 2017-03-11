@@ -2,7 +2,7 @@
 
 ## About
 
-With **Shapesifter**, merge markdown documents, handlebars templates and 
+With **Shapeshifter**, merge markdown documents, handlebars templates and 
 static html themes into static html files and / or pdf documents.
 
 The tool is currently usable in state.
@@ -75,11 +75,12 @@ Shapeshifter can be executed like so :
 
 ### CLI Options
 
-- `-h`, `--help`        output usage information
-- `-V`, `--version`     output the version number
-- `-s`, `--src <item>`  the markdown files location, `_toCompile` by default
-- `-d`, `--destination <item>` the generation destination, `_compiled` by default
-- `-t`, `--templates <item>`    the templates location, `_templates` by default
+- `-h`, `--help`        Output usage information
+- `-V`, `--version`     Output the version number
+- `-s`, `--src <item>`  The markdown files location, `_toCompile` by default
+- `-d`, `--destination <item>` The generation destination, `_compiled` by default
+- `-t`, `--templates <item>`    The templates location, `_templates` by default
+- `-w`, `--watch`   Watch each change and compile the document
 
 ### Use a config file
 
@@ -92,6 +93,7 @@ module.exports = {
     src:  './_toCompile/',
     dest: './_compiled2',
     templateLocation: './_templates',
+    watch: false,
     pdfConfig: {"format": "A3",
         "border": {
             "top": "25mm",            // default is 0, units: mm, cm, in, px
@@ -108,7 +110,8 @@ module.exports = {
 module.exports = {
     src:  '',   // the markdown files location, `_toCompile` by default
     dest: '',   // the generation destination, `_compiled` by default
-    templateLocation: '', // the templates location, `_templates` by default
+    templateLocation: '', // the templates location, `_templates` by default,
+    watch: true, // enable the watcher : compile automatically the document when changes occurred
     pdfConfig: {} // the pdf compilation options, see https://github.com/marcbachmann/node-html-pdf#options
 };
 ```

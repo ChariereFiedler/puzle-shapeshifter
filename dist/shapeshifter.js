@@ -1,24 +1,29 @@
-import * as commander from 'commander';
-import * as path from 'path';
-import * as process from 'process';
-import * as fs from 'fs';
-import * as watch from 'node-watch';
-import {config as defaultParams} from './config/defaultConfig';
-
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const commander = require("commander");
+const path = require("path");
+const process = require("process");
+const fs = require("fs");
+const watch = require("node-watch");
+const defaultConfig_1 = require("./config/defaultConfig");
 const gulp = require('gulp');
 const markdown = require('gulp-markdown');
 const del = require('del');
 const handlebars = require('handlebars');
 const frontMatter = require('gulp-front-matter');
 const tap = require('gulp-tap');
-
 const pdf = require('gulp-html-pdf');
 const debug = require('gulp-debug');
-
 let properties = require('../package.json');
 let hbsGulpTask = require('./../gulp_tasks/handlebars-compilation');
-
-
 /**
  * The core app function. It invokes the compilations steps, using gulp tasks
  * @param params The app params :
@@ -27,18 +32,19 @@ let hbsGulpTask = require('./../gulp_tasks/handlebars-compilation');
  *  - templateLocation: The templates location
  * @returns {Promise<any>} The gulp process result
  */
-async function compile(params):Promise<any>{
-    console.log('Compilation running');
-    let templates = {};
-    return gulp.src(params.src)
-        .pipe(frontMatter({
+function compile(params) {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log('Compilation running');
+        let templates = {};
+        return gulp.src(params.src)
+            .pipe(frontMatter({
             property: 'data',
             remove: true
-        }).on('error', (e)=>{
+        }).on('error', (e) => {
             console.log(e);
         }))
-        .pipe(markdown())
-        .pipe(tap(function (file) {
+            .pipe(markdown())
+            .pipe(tap(function (file) {
             let template = file.data.template;
             let compile = (template) => {
                 return template({
@@ -46,30 +52,25 @@ async function compile(params):Promise<any>{
                     content: file.contents.toString()
                 });
             };
-
             let filepath = "";
             if (template === undefined) {
                 template = "page";
             }
-
             filepath = path.join(params.templateLocation, template + '.hbs');
-
             if (!fs.existsSync(filepath)) {
                 filepath = path.join(__dirname, "../_templates/page.hbs");
             }
             let data = fs.readFileSync(filepath);
             templates[template] = handlebars.compile(data.toString());
-            file.contents = new Buffer(compile(templates[template]), "utf-8")
+            file.contents = new Buffer(compile(templates[template]), "utf-8");
         }))
-        .pipe(gulp.dest(path.join(params.dest, "html")))
-        .pipe(debug({title: 'To HTML : '}))
-        .pipe(pdf(params.pdfConfig))
-        .pipe(debug({title: 'To PDF : '}))
-        .pipe(gulp.dest(path.join(params.dest, "pdf")));
+            .pipe(gulp.dest(path.join(params.dest, "html")))
+            .pipe(debug({ title: 'To HTML : ' }))
+            .pipe(pdf(params.pdfConfig))
+            .pipe(debug({ title: 'To PDF : ' }))
+            .pipe(gulp.dest(path.join(params.dest, "pdf")));
+    });
 }
-
-
-
 /**
  * Display the parameters in console
  * @param params The parameters to print
@@ -84,8 +85,7 @@ function printArgs(params) {
     console.dir("PDF Options : ");
     console.dir(params.pdfConfig || {});
 }
-
-function getConfigFileParams(): Object{
+function getConfigFileParams() {
     let filepath = path.join(process.cwd(), "shapeshifter.config.js");
     let config = {};
     if (fs.existsSync(filepath)) {
@@ -93,8 +93,6 @@ function getConfigFileParams(): Object{
     }
     return config;
 }
-
-
 function watchActions(params) {
     console.log("--------------------------------------");
     console.log("Watching : " + params.src);
@@ -106,40 +104,34 @@ function watchActions(params) {
         tempParams.src = filename;
         if (fs.existsSync(filename)) {
             compile(params);
-        } else {
-            console.log(filename + " does not exist anymore. Cannot compile it.")
+        }
+        else {
+            console.log(filename + " does not exist anymore. Cannot compile it.");
         }
     });
 }
 /** The main process **/
-(()=> {
-
+(() => {
     commander
         .version(properties.version)
         .option('-s, --src <item>', 'The markdown files location to transform')
         .option('-d, --destination <item>', 'The generation destination')
         .option('-t, --templates <item>', 'The templates location')
         .option('-w, --watch', 'Watch each change and compile the document');
-
     commander
         .parse(process.argv);
-
     let configParams = getConfigFileParams();
-    let finalParams = Object.assign(defaultParams, configParams, commander);
+    let finalParams = Object.assign(defaultConfig_1.config, configParams, commander);
     let dirSrc = finalParams.src;
-    finalParams.src = path.join( dirSrc, '/**/*.md');
-
+    finalParams.src = path.join(dirSrc, '/**/*.md');
     console.log("--------------------------------------");
-    console.log(properties.name + " "+ properties.version);
+    console.log(properties.name + " " + properties.version);
     console.log("--------------------------------------");
-
-
     printArgs(finalParams);
-    compile(finalParams).then(()=> {
+    compile(finalParams).then(() => {
         if (finalParams.watch) {
             finalParams.src = dirSrc;
             watchActions(finalParams);
         }
     });
-
 })();
