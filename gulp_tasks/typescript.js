@@ -19,7 +19,7 @@ module.exports = function (gulp, config, taskName) {
     console.log('Dist: '+config.buildDirectory);
 
     gulp.task('typescript' + taskName, () => {
-        return gulp.src(path.join(config.srcDirectory,'/**/*.ts'))
+        return gulp.src(path.join(config.srcDirectory, '/**/*.ts'))
             .pipe(tsProject())
             .js
             .pipe(debug())

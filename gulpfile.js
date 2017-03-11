@@ -21,10 +21,19 @@ const config = {
 };
 require('./gulp_tasks/typescript')(gulp, config);
 
+
+const configCli = {
+    buildDirectory: './bin',
+    srcDirectory: './bin',
+    tscongif: './tsconfig.json'
+
+};
+require('./gulp_tasks/typescript')(gulp, configCli, "Cli");
+
 const configTest = {
     buildDirectory: './test',
     srcDirectory: './test',
-    tscongif: './test/tsconfig.json'
+    tscongif: './tsconfig.json'
 };
 
 require('./gulp_tasks/typescript')(gulp, configTest, "Test");
@@ -46,8 +55,9 @@ require('./gulp_tasks/handlebars-compilation')(gulp, hbsCompileParams);
 gulp.task('watch', ()=> {
     gulp.watch(path.join(config.srcDirectory, './**/*.ts'), gulp.series('typescript'));
     gulp.watch(path.join(configTest.srcDirectory, './**/*.ts'), gulp.series('typescriptTest'));
+    gulp.watch(path.join(configCli.srcDirectory, './**/*.ts'), gulp.series('typescriptCli'));
 });
 
-gulp.task('build', gulp.parallel('typescript', 'typescriptTest'));
+gulp.task('build', gulp.parallel('typescript', 'typescriptTest', 'typescriptCli'));
 
 gulp.task('default', gulp.series('build','watch'));
