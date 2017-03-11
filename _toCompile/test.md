@@ -7,4 +7,6 @@ randomvar: random
 
 # I'm a title !
 
+Title content : {{{data.title}}}
+
 **I'm Bold**

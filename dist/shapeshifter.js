@@ -46,23 +46,32 @@ function compile(params) {
             .pipe(markdown())
             .pipe(tap(function (file) {
             let template = file.data.template;
-            let compile = (template) => {
-                return template({
-                    data: file.data,
-                    content: file.contents.toString()
-                });
-            };
-            let filepath = "";
+            // Define a default template : page
             if (template === undefined) {
                 template = "page";
             }
-            filepath = path.join(params.templateLocation, template + '.hbs');
-            if (!fs.existsSync(filepath)) {
-                filepath = path.join(__dirname, "../_templates/page.hbs");
+            // Use currently only hbs template
+            let templatePath = path.join(params.templateLocation, template + '.hbs');
+            // If the template defined by te user does not exist, we search in Shapeshifter default template.
+            // Otherwise, the page template is used.
+            if (!fs.existsSync(templatePath)) {
+                templatePath = path.join(__dirname, template + ".hbs");
+                if (!fs.existsSync(templatePath)) {
+                    templatePath = path.join(__dirname, "../_templates/page.hbs");
+                }
             }
-            let data = fs.readFileSync(filepath);
+            // Add templatePath as file.data
+            file.data.templatePath = templatePath;
+            // Compile markdown content as hbs template
+            let compiledContent = handlebars.compile(file.contents.toString())({
+                data: file.data
+            });
+            let data = fs.readFileSync(templatePath);
             templates[template] = handlebars.compile(data.toString());
-            file.contents = new Buffer(compile(templates[template]), "utf-8");
+            file.contents = new Buffer(templates[template]({
+                data: file.data,
+                content: compiledContent
+            }), "utf-8");
         }))
             .pipe(gulp.dest(path.join(params.dest, "html")))
             .pipe(debug({ title: 'To HTML : ' }))
