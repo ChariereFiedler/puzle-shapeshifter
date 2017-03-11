@@ -24,6 +24,8 @@ MIT
     - To PDF
     - To Html
 - ~~Add custom options with dedicated config file per project~~
+- ~~Add a watch option~~
+- Add an auto reload option
 - Add a CLI command to init a config file
 - Add custom options with dedicated config file per folder
 - Fix issues:
@@ -175,6 +177,8 @@ suffix.
 Do not forget to add all frontmatter variables used by the template you
 have defined.
 
+You can inject the data defined in the frontmatter in the content section.
+
 Example:
 
 ```markdown
@@ -185,7 +189,7 @@ Example:
     randomvar: random
     ---
     
-    ## I'm a title !
+    ## First title {{{data.title}}}
     
     **I'm Bold**
 ```
