@@ -64,9 +64,13 @@ class Shapeshifter {
     }
     getParametersFromFile() {
         let config = null;
-        if (this.parameters.configFileLocation && this.parameters.configFileLocation != "") {
+        console.log(this.parameters);
+        console.log("Get Config File " + this.parameters.configFileLocation);
+        if (this.parameters.configFileLocation != "") {
             let filepath = path.join(process.cwd(), this.parameters.configFileLocation);
+            console.log("Filepath : " + filepath);
             if (fs.existsSync(filepath)) {
+                console.log("Have found a config file at ${filepath}");
                 config = require(filepath);
             }
         }
@@ -152,6 +156,8 @@ class Shapeshifter {
         result += "Destination : " + this.parameters.destination || "";
         result += "\n";
         result += "Templates locations : " + this.parameters.templateLocation || "";
+        result += "\n";
+        result += "Config file : " + this.parameters.configFileLocation || "";
         result += "\n";
         if (this.parameters.watch) {
             result += "Watcher enabled";

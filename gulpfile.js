@@ -49,8 +49,6 @@ const hbsCompileParams = {
     templateLocation: './_templates'
 };
 
-require('./gulp_tasks/handlebars-compilation')(gulp, hbsCompileParams);
-
 /*---------------------------------------------*/
 gulp.task('watch', ()=> {
     gulp.watch(path.join(config.srcDirectory, './**/*.ts'), gulp.series('typescript'));

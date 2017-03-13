@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import * as watch from 'node-watch';
 import * as gulp from "gulp";
 import * as markdown from "gulp-markdown";
+
 import {Config} from "./models/config";
 
 //const markdown = require('gulp-markdown');
@@ -58,11 +59,13 @@ export class Shapeshifter {
 
     public getParametersFromFile(): Config{
         let config : Config = null;
-
-        if (this.parameters.configFileLocation && this.parameters.configFileLocation != "") {
+        console.log(this.parameters);
+        console.log("Get Config File " + this.parameters.configFileLocation);
+        if (this.parameters.configFileLocation != "") {
             let filepath = path.join(process.cwd(), this.parameters.configFileLocation);
-
+            console.log("Filepath : " + filepath);
             if (fs.existsSync(filepath)) {
+                console.log("Have found a config file at ${filepath}");
                 config = require(filepath) as Config;
             }
         }
@@ -158,6 +161,8 @@ public async compile(params?: Config): Promise<any> {
         result +="Destination : " + this.parameters.destination || "";
         result += "\n";
         result +="Templates locations : " + this.parameters.templateLocation || "";
+        result += "\n";
+        result += "Config file : " + this.parameters.configFileLocation || "";
         result += "\n";
         if (this.parameters.watch) {
             result += "Watcher enabled";
